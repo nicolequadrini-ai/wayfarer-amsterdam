@@ -562,8 +562,8 @@ function App(){
     const today=new Date().toDateString();
     const key="wayfarer_discovery_"+today;
     const seen=localStorage.getItem(key);
-    if(!seen){
-      // Small delay so the app renders first
+    const hasSuggestions=DAILY_SUGGESTIONS[day.date]&&DAILY_SUGGESTIONS[day.date].length>0;
+    if(!seen&&hasSuggestions){
       const t=setTimeout(()=>{
         setShowDiscovery(true);
         localStorage.setItem(key,"1");
